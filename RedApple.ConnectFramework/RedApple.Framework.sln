@@ -1,0 +1,69 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.102
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RedApple.ConnectFramework", "RedApple.ConnectFramework.csproj", "{A119721F-FC6B-47E3-B985-FD7F0FDB73FC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RedApple.GameFramework", "..\..\..\GameFreamwork\DevelopmendV1\RedApple.GameFramework\RedApple.GameFramework.csproj", "{5EA448FD-12C5-4646-8FCF-D2136FF06C76}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FremaWorkTest", "..\..\..\FremaWorkTest\FremaWorkTest\FremaWorkTest.csproj", "{9CF4C3EB-9478-4226-AA18-50B09F0595D6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RedApple.DomainNet35", "..\RedApple.DomainNet35\RedApple.DomainNet35.csproj", "{95F27939-E73E-4974-ADE1-EF0837495914}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RedApple.DomainNetStandart", "..\RedApple.DomainNetStandart\RedApple.DomainNetStandart.csproj", "{99506702-1CA0-4885-A8BF-4F95B4D7170D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A119721F-FC6B-47E3-B985-FD7F0FDB73FC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A119721F-FC6B-47E3-B985-FD7F0FDB73FC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A119721F-FC6B-47E3-B985-FD7F0FDB73FC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A119721F-FC6B-47E3-B985-FD7F0FDB73FC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5EA448FD-12C5-4646-8FCF-D2136FF06C76}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5EA448FD-12C5-4646-8FCF-D2136FF06C76}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5EA448FD-12C5-4646-8FCF-D2136FF06C76}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5EA448FD-12C5-4646-8FCF-D2136FF06C76}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9CF4C3EB-9478-4226-AA18-50B09F0595D6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9CF4C3EB-9478-4226-AA18-50B09F0595D6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9CF4C3EB-9478-4226-AA18-50B09F0595D6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9CF4C3EB-9478-4226-AA18-50B09F0595D6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{95F27939-E73E-4974-ADE1-EF0837495914}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{95F27939-E73E-4974-ADE1-EF0837495914}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{95F27939-E73E-4974-ADE1-EF0837495914}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{95F27939-E73E-4974-ADE1-EF0837495914}.Release|Any CPU.Build.0 = Release|Any CPU
+		{99506702-1CA0-4885-A8BF-4F95B4D7170D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{99506702-1CA0-4885-A8BF-4F95B4D7170D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{99506702-1CA0-4885-A8BF-4F95B4D7170D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{99506702-1CA0-4885-A8BF-4F95B4D7170D}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {B4FE1827-28C4-429F-A6F1-4320F549CCA5}
+	EndGlobalSection
+	GlobalSection(TeamFoundationVersionControl) = preSolution
+		SccNumberOfProjects = 6
+		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccTeamFoundationServer = https://sadikhanecioglu.visualstudio.com/
+		SccProjectUniqueName0 = RedApple.ConnectFramework.csproj
+		SccLocalPath0 = .
+		SccProjectUniqueName1 = ..\\..\\..\\GameFreamwork\\DevelopmendV1\\RedApple.GameFramework\\RedApple.GameFramework.csproj
+		SccProjectName1 = ../../../GameFreamwork/DevelopmendV1/RedApple.GameFramework
+		SccLocalPath1 = ..\\..\\..\\GameFreamwork\\DevelopmendV1\\RedApple.GameFramework
+		SccProjectUniqueName2 = ..\\..\\..\\FremaWorkTest\\FremaWorkTest\\FremaWorkTest.csproj
+		SccProjectName2 = ../../../FremaWorkTest/FremaWorkTest
+		SccLocalPath2 = ..\\..\\..\\FremaWorkTest\\FremaWorkTest
+		SccProjectUniqueName3 = ..\\RedApple.DomainNet35\\RedApple.DomainNet35.csproj
+		SccProjectName3 = ../RedApple.DomainNet35
+		SccLocalPath3 = ..\\RedApple.DomainNet35
+		SccProjectUniqueName4 = ..\\RedApple.DomainNetStandart\\RedApple.DomainNetStandart.csproj
+		SccProjectName4 = ../RedApple.DomainNetStandart
+		SccLocalPath4 = ..\\RedApple.DomainNetStandart
+		SccLocalPath5 = .
+	EndGlobalSection
+EndGlobal
