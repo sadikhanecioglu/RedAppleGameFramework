@@ -1,0 +1,22 @@
+{
+  "ApplicationName": "RedApple",
+  "RedAppleServerSetting": {
+
+    "Server": "redapplegame.com",
+    "Api": "http://api.redapplegame.com"
+    //"Server": "localhost:34852",
+    //"Api": "http://localhost:34852"
+
+  },
+  "RedAppleRabbitSetting": {
+
+    "ConnectionHost": "134.119.183.70",
+    "Vhost": "BetGo",
+    "Port": "5672",
+    "UserName": "betgo",
+    "Password": "betgo",
+    "NetworkRecoveryInterval": "00:10:00",
+    "AutomaticRecoveryEnabled": true
+
+  }
+}

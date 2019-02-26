@@ -46,7 +46,7 @@ namespace RedApple.GameFramework
 
         }
 
-        public RedApple.GameFramework.config.RedConfigManager Configure(string configPath)
+        public RedApple.GameFramework.config.RedConfigManager Configure(string configPath = "")
         {
             this._configPath = configPath;
             if (string.IsNullOrEmpty(_configPath))
