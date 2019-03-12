@@ -60,14 +60,14 @@ namespace FremaWorkTest
             //    }
 
             //});
-
+            var questManager = contanier.Resolve<IQuestManager>();
             userManager.OpenSession(new OpenSessionDto { UserName = "2demo", UserPassword = "1234" }, (sessionUser) =>
             {
 
                 if (sessionUser.ResultStatus == RedApple.DomainNet35.status.ResultStatus.Ok)
                 {
 
-                    var questManager = contanier.Resolve<IQuestManager>();
+                 
                     questManager.GetNewQuest((quest) => {
 
 
@@ -82,7 +82,15 @@ namespace FremaWorkTest
                     //not session
                 }
             });
-           
+            
+            //var questManager = contanier.Resolve<IQuestManager>();
+            //questManager.GetNewQuest((quest) => {
+
+
+            //    Console.WriteLine(quest);
+
+            //});
+
             //var real_time = new RedRealTimeConnection($"ws://localhost:34852/ws?Authorization={r.SessionUser.RedToken}");
             //var proxy = real_time.CreateProxy("ws");
             //proxy.On<transfer>("connected", (transfer) =>

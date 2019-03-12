@@ -2,10 +2,10 @@
   "ApplicationName": "RedApple",
   "RedAppleServerSetting": {
 
-    "Server": "localhost:34852",
-    "Api": "http://localhost:34852",
-    //"Server": "redapplegame.com",
-    //"Api": "http://api.redapplegame.com",
+    //"Server": "localhost:34852",
+    //"Api": "http://localhost:34852",
+    "Server": "redapplegame.com",
+    "Api": "http://api.redapplegame.com",
     "LogingUrl": "/betgoweb/auth/LoginWebUser",
     "RegisterUrl": "/betgoweb/auth/RegisterWebuser",
     "UpdateUserUrl": "/betgoweb/webapi/ChangeMyProfile",
