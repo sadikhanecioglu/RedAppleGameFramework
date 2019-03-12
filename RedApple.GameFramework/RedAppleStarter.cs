@@ -1,6 +1,7 @@
 ﻿using RedApple.ConnectFramework.manager.UserManager;
 using RedApple.GameFramework.config;
 using RedApple.GameFramework.contanier;
+using RedApple.GameFramework.manager.QuestManager;
 using RedApple.GameFramework.manager.UserManager;
 using System;
 using System.Collections.Generic;
@@ -41,6 +42,7 @@ namespace RedApple.GameFramework
 
             RedContanierManager.Instance.Contanier.RegisterInstanceType<ConnectFramework.socket.IRedSocket, ConnectFramework.socket.RedWebSocket>();
             RedContanierManager.Instance.Contanier.RegisterInstanceType<ConnectFramework.www.IRedWebRequest, ConnectFramework.www.RedWebRequest>();
+            RedContanierManager.Instance.Contanier.RegisterInstanceType<IQuestManager, QuestManager>();
 
             return RedContanierManager.Instance;
 

@@ -51,6 +51,8 @@
     <Compile Include="Dto\socket\WebSocketMessageDto.cs" />
     <Compile Include="IDomainNet35.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Quest\QuestResultModel.cs" />
+    <Compile Include="Quest\QuestTenant.cs" />
     <Compile Include="result\ResultModel.cs" />
     <Compile Include="Session\OpenSessionDto.cs" />
     <Compile Include="Session\SessionResultModel.cs" />

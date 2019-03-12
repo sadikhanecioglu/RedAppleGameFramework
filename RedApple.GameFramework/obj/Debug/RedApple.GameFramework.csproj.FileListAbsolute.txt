@@ -22,7 +22,6 @@ C:\Works\RedApple\ConnectFreamwork\DevelopmentV2Git\RedAppleGameFramework\RedApp
 C:\Works\RedApple\ConnectFreamwork\DevelopmentV2Git\RedAppleGameFramework\RedApple.GameFramework\bin\Debug\websocket-sharp.dll
 C:\Works\RedApple\ConnectFreamwork\DevelopmentV2Git\RedAppleGameFramework\RedApple.GameFramework\bin\Debug\RedApple.ConnectFramework.pdb
 C:\Works\RedApple\ConnectFreamwork\DevelopmentV2Git\RedAppleGameFramework\RedApple.GameFramework\bin\Debug\RedApple.DomainNet35.pdb
-C:\Works\RedApple\ConnectFreamwork\DevelopmentV2Git\RedAppleGameFramework\RedApple.GameFramework\bin\Debug\Newtonsoft.Json.xml
 C:\Works\RedApple\ConnectFreamwork\DevelopmentV2Git\RedAppleGameFramework\RedApple.GameFramework\bin\Debug\websocket-sharp.xml
 C:\Works\RedApple\ConnectFreamwork\DevelopmentV2Git\RedAppleGameFramework\RedApple.GameFramework\obj\Debug\RedApple.GameFramework.csprojAssemblyReference.cache
 C:\Works\RedApple\ConnectFreamwork\DevelopmentV2Git\RedAppleGameFramework\RedApple.GameFramework\obj\Debug\RedApple.GameFramework.csproj.CoreCompileInputs.cache

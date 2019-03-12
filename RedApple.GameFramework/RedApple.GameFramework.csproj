@@ -59,6 +59,8 @@
     <Compile Include="contanier\SingletonCreationService.cs" />
     <Compile Include="contanier\TinyDependencyAttribute.cs" />
     <Compile Include="extentions\Extentions.cs" />
+    <Compile Include="manager\QuestManager\IQuestManager.cs" />
+    <Compile Include="manager\QuestManager\QuestManager.cs" />
     <Compile Include="manager\UserManager\IUserManager.cs" />
     <Compile Include="manager\UserManager\UserManager.cs" />
     <Compile Include="realtime\IRedRealTimeConnection.cs" />
