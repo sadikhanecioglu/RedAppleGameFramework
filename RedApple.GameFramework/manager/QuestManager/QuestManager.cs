@@ -40,8 +40,8 @@ namespace RedApple.GameFramework.manager.QuestManager
                 using (var _webRequest = new RedWebRequest(_redSessionManager.SessionUser.RedToken))
                 {
                     var quest = _webRequest.Get<DomainNet35.Quest.QuestTenant>($"{_serverSetting.Api}/redapple/gameadmin/StartQuest");
-                  
-                    _theradStarter.Complate.Invoke(new QuestResultModel(quest));
+
+                    _threadManager.Enqueue(() => _theradStarter.Complate.Invoke(new QuestResultModel(quest)));
                     return;
 
                     //if (_loginresult.result == DomainNet35.Dto.request.GeneralResultType.OK)
@@ -57,7 +57,7 @@ namespace RedApple.GameFramework.manager.QuestManager
 
                 //if (_theradStarter.Complate != null)
                 //    _theradStarter.Complate.Invoke(new LogoutUserResultModel(DomainNet35.status.ResultStatus.Error, ex.Message));
-                _theradStarter.Error.Invoke(new ThreadException(ex));
+                _threadManager.Enqueue(() => _theradStarter.Error.Invoke(new ThreadException(ex)));
             }
 
 

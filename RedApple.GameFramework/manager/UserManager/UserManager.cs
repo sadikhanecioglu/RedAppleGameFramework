@@ -40,28 +40,34 @@ namespace RedApple.GameFramework.manager.UserManager
             {
 
                 if (!_redSessionManager.IsAuthenticated)
-                    _theradStarter.Error.Invoke(new ThreadException(new Exception("Authorized Failed")));
+                    _threadManager.Enqueue(() => _theradStarter.Error.Invoke(new ThreadException(new Exception("Authorized Failed"))));
 
                 _redSessionManager.LogOut();
-                if(_theradStarter.Complate != null)
-                _theradStarter.Complate.Invoke(new LogoutUserResultModel(DomainNet35.status.ResultStatus.Ok, "Ok"));
+                if (_theradStarter.Complate != null)
+                    _threadManager.Enqueue(() => _theradStarter.Complate.Invoke(new LogoutUserResultModel(DomainNet35.status.ResultStatus.Ok, "Ok")));
             }
             catch (Exception ex)
             {
 
                 if (_theradStarter.Complate != null)
-                    _theradStarter.Complate.Invoke(new LogoutUserResultModel(DomainNet35.status.ResultStatus.Error, ex.Message));
-                _theradStarter.Error.Invoke(new ThreadException(ex));
+                    _threadManager.Enqueue(() => _theradStarter.Complate.Invoke(new LogoutUserResultModel(DomainNet35.status.ResultStatus.Error, ex.Message)));
+                _threadManager.Enqueue(() => _theradStarter.Error.Invoke(new ThreadException(ex)));
             }
-          
+
         }
 
         public void OpenSession(OpenSessionDto openSessionDto, Action<SessionResultModel> onComplate)
         {
+
+
+
             _threadManager.AddTherad<OpenSessionDto, SessionResultModel>("RedApple.GameFramework.manager.UserManager.OpenSession", OpenSession, openSessionDto, onComplate);
         }
         private void OpenSession(object theradStarter)
         {
+
+
+
             var _theradStarter = (TheradStarter<OpenSessionDto, SessionResultModel>)theradStarter;
             try
             {
@@ -72,19 +78,25 @@ namespace RedApple.GameFramework.manager.UserManager
                     if (_loginresult.result == DomainNet35.Dto.request.GeneralResultType.OK)
                     {
                         var user = _redSessionManager.OpenRedSession(_loginresult.UserInfo.Id, _loginresult.UserInfo.UserName, _loginresult.token, _loginresult.UserInfo.RealBlanced, _loginresult.expiredDate);
-                        _theradStarter.Complate.Invoke(new SessionResultModel(user));
+
+                        _threadManager.Enqueue(() => _theradStarter.Complate.Invoke(new SessionResultModel(user)));
+
                         return;
                     }
                     if (_theradStarter.Complate != null)
-                        _theradStarter.Complate.Invoke(new SessionResultModel(_loginresult.message));
-                }
+                    {
+                        _threadManager.Enqueue(() => _theradStarter.Complate.Invoke(new SessionResultModel(_loginresult.message)));
+                    }
 
+                }
             }
             catch (Exception ex)
             {
                 if (_theradStarter.Complate != null)
-                    _theradStarter.Complate.Invoke(new SessionResultModel(ex.Message));
-                _theradStarter.Error.Invoke(new ThreadException(ex));
+                    _threadManager.Enqueue(() => _theradStarter.Complate.Invoke(new SessionResultModel(ex.Message)));
+
+                if (_theradStarter.Error != null)
+                    _threadManager.Enqueue(() => _theradStarter.Error.Invoke(new ThreadException(ex)));
             }
         }
 
@@ -115,19 +127,19 @@ namespace RedApple.GameFramework.manager.UserManager
                     if (result.ResultType == DomainNet35.Dto.request.GeneralResultType.OK)
                     {
                         if (_theradStarter.Complate != null)
-                            _theradStarter.Complate.Invoke(new RegisterUserResultModel(result.Message, "Ok"));
+                            _threadManager.Enqueue(() => _theradStarter.Complate.Invoke(new RegisterUserResultModel(result.Message, "Ok")));
                         return;
                     }
 
 
                     if (_theradStarter.Complate != null)
-                        _theradStarter.Complate.Invoke(new RegisterUserResultModel(DomainNet35.status.ResultStatus.Error, result.Message));
+                        _threadManager.Enqueue(() => _theradStarter.Complate.Invoke(new RegisterUserResultModel(DomainNet35.status.ResultStatus.Error, result.Message)));
                 }
             }
             catch (Exception ex)
             {
 
-                _theradStarter.Complate.Invoke(new RegisterUserResultModel(DomainNet35.status.ResultStatus.Error, ex.Message));
+                _threadManager.Enqueue(() => _theradStarter.Complate.Invoke(new RegisterUserResultModel(DomainNet35.status.ResultStatus.Error, ex.Message)));
             }
 
 
@@ -144,7 +156,7 @@ namespace RedApple.GameFramework.manager.UserManager
             {
 
                 if (!_redSessionManager.IsAuthenticated)
-                    _theradStarter.Error.Invoke(new ThreadException(new Exception("Authorized Failed")));
+                    _threadManager.Enqueue(() => _theradStarter.Error.Invoke(new ThreadException(new Exception("Authorized Failed"))));
 
                 var updateUserDto = _theradStarter.DATA;
 
@@ -154,20 +166,20 @@ namespace RedApple.GameFramework.manager.UserManager
                     if (result.ResultType == DomainNet35.Dto.request.GeneralResultType.OK)
                     {
                         if (_theradStarter.Complate != null)
-                            _theradStarter.Complate.Invoke(new UpdateResultModel(DomainNet35.status.ResultStatus.Ok, "Ok"));
+                            _threadManager.Enqueue(() => _theradStarter.Complate.Invoke(new UpdateResultModel(DomainNet35.status.ResultStatus.Ok, "Ok")));
 
 
                         return;
                     }
                     if (_theradStarter.Complate != null)
-                        _theradStarter.Complate.Invoke(new UpdateResultModel(DomainNet35.status.ResultStatus.Error, result.Message));
+                        _threadManager.Enqueue(() => _theradStarter.Complate.Invoke(new UpdateResultModel(DomainNet35.status.ResultStatus.Error, result.Message)));
                 }
             }
             catch (Exception ex)
             {
                 if (_theradStarter.Complate != null)
-                    _theradStarter.Complate.Invoke(new UpdateResultModel(DomainNet35.status.ResultStatus.Error, ex.Message));
-                _theradStarter.Error.Invoke(new ThreadException(ex));
+                    _threadManager.Enqueue(() => _theradStarter.Complate.Invoke(new UpdateResultModel(DomainNet35.status.ResultStatus.Error, ex.Message)));
+                _threadManager.Enqueue(() => _theradStarter.Error.Invoke(new ThreadException(ex)));
             }
         }
 

@@ -28,3 +28,5 @@ C:\Works\RedApple\ConnectFreamwork\DevelopmentV2Git\RedAppleGameFramework\RedApp
 C:\Works\RedApple\ConnectFreamwork\DevelopmentV2Git\RedAppleGameFramework\RedApple.GameFramework\obj\Debug\RedApple.GameFramework.csproj.CopyComplete
 C:\Works\RedApple\ConnectFreamwork\DevelopmentV2Git\RedAppleGameFramework\RedApple.GameFramework\obj\Debug\RedApple.GameFramework.dll
 C:\Works\RedApple\ConnectFreamwork\DevelopmentV2Git\RedAppleGameFramework\RedApple.GameFramework\obj\Debug\RedApple.GameFramework.pdb
+C:\Works\RedApple\ConnectFreamwork\DevelopmentV2Git\RedAppleGameFramework\RedApple.GameFramework\bin\Debug\UnityEngine.dll
+C:\Works\RedApple\ConnectFreamwork\DevelopmentV2Git\RedAppleGameFramework\RedApple.GameFramework\bin\Debug\UnityEngine.xml

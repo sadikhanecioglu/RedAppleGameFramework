@@ -44,6 +44,9 @@
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
+    <Reference Include="UnityEngine">
+      <HintPath>..\..\..\..\..\..\Program Files\Unity\Editor\Data\Managed\UnityEngine.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="auth\AuthenticationManager.cs" />
@@ -72,9 +75,12 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="session\RedSessionManager.cs" />
     <Compile Include="system\Lazy.cs" />
+    <Compile Include="thread\InvokePump.cs" />
+    <Compile Include="thread\MainThreadQueue.cs" />
     <Compile Include="thread\RedThreadManager.cs" />
     <Compile Include="thread\TheradStarter.cs" />
     <Compile Include="thread\ThreadException.cs" />
+    <Compile Include="thread\UnityMainThreadDispatcher.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

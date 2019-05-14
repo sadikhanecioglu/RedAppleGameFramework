@@ -13,6 +13,7 @@ namespace FremaWorkTest
 {
     class Program
     {
+        public static RedApple.GameFramework.contanier.Container contanier; 
         public class transfer
         {
             public int Hesap { get; set; }
@@ -20,11 +21,11 @@ namespace FremaWorkTest
         static void Main(string[] args)
         {
             RedApple.GameFramework.RedAppleStarter start = new RedApple.GameFramework.RedAppleStarter();
-            var contanier = start.RedRegister().Contanier;
+           
             start.UseAuthentication();
             start.Configure();
             start.RedAppleStart();
-
+            contanier = start.RedRegister().Contanier;
 
             var userManager = contanier.Resolve<IUserManager>();
 
@@ -61,28 +62,35 @@ namespace FremaWorkTest
 
             //});
             var questManager = contanier.Resolve<IQuestManager>();
-            userManager.OpenSession(new OpenSessionDto { UserName = "2demo", UserPassword = "1234" }, (sessionUser) =>
-            {
-
-                if (sessionUser.ResultStatus == RedApple.DomainNet35.status.ResultStatus.Ok)
-                {
-
-                 
-                    questManager.GetNewQuest((quest) => {
+            userManager.OpenSession(new OpenSessionDto { UserName = "2demo", UserPassword = "1234", OpenSessionType = RedApple.DomainNet35.status.OpenSessionType.UserNamePassword }, (result) => {
 
 
-                        Console.WriteLine(quest);
+                Console.WriteLine(result.ResultStatus);
 
-                    });
-
-                    //login complate
-                }
-                else
-                {
-                    //not session
-                }
             });
             
+            //userManager.OpenSession(new OpenSessionDto { UserName = "2demo", UserPassword = "1234" }, (sessionUser) =>
+            //{
+
+            //    if (sessionUser.ResultStatus == RedApple.DomainNet35.status.ResultStatus.Ok)
+            //    {
+
+                 
+            //        questManager.GetNewQuest((quest) => {
+
+
+            //            Console.WriteLine(quest);
+
+            //        });
+
+            //        //login complate
+            //    }
+            //    else
+            //    {
+            //        //not session
+            //    }
+            //});
+
             //var questManager = contanier.Resolve<IQuestManager>();
             //questManager.GetNewQuest((quest) => {
 
@@ -116,7 +124,7 @@ namespace FremaWorkTest
 
             //userManager.UpdateUser(new RedApple.DomainNet35.User.UpdateUserDto { OldPassword = "12345", NewPassWord = "1234" });
             //userManager.LogoutUser();
-
+           // contanier.RegisterInstanceType<IUserManager>();
 
             Console.ReadLine();
         }

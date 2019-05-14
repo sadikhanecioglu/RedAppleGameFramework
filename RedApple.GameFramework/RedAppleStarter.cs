@@ -3,6 +3,7 @@ using RedApple.GameFramework.config;
 using RedApple.GameFramework.contanier;
 using RedApple.GameFramework.manager.QuestManager;
 using RedApple.GameFramework.manager.UserManager;
+using RedApple.GameFramework.thread;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -31,6 +32,15 @@ namespace RedApple.GameFramework
             RedContanierManager.Instance.Contanier.RegisterInstanceType<IUserManager, UserManager>();
 
         }
+
+
+        public void AddMainThreadExecuter(UnityMainThreadDispatcher unityMainThreadDispatcher)
+        {
+
+            RedThreadManager.Instance.SetMainThreadDispacter(unityMainThreadDispatcher);
+
+        }
+
 
 
         /// <summary>

@@ -48,6 +48,7 @@
     <Compile Include="Dto\IDtoNet35.cs" />
     <Compile Include="Dto\request\GeneralResultModel.cs" />
     <Compile Include="Dto\request\LoginResultModel.cs" />
+    <Compile Include="Dto\request\RegisterResultModel.cs" />
     <Compile Include="Dto\socket\WebSocketMessageDto.cs" />
     <Compile Include="IDomainNet35.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
