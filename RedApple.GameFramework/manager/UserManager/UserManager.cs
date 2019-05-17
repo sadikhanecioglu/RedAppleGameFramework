@@ -78,9 +78,10 @@ namespace RedApple.GameFramework.manager.UserManager
                     if (_loginresult.result == DomainNet35.Dto.request.GeneralResultType.OK)
                     {
                         var user = _redSessionManager.OpenRedSession(_loginresult.UserInfo.Id, _loginresult.UserInfo.UserName, _loginresult.token, _loginresult.UserInfo.RealBlanced, _loginresult.expiredDate);
-
-                        _threadManager.Enqueue(() => _theradStarter.Complate.Invoke(new SessionResultModel(user)));
-
+                        if (_threadManager.unityMainThreadDispatcher != null)
+                            _threadManager.Enqueue(() => _theradStarter.Complate.Invoke(new SessionResultModel(user)));
+                        else
+                            _theradStarter.Complate.Invoke(new SessionResultModel(user));
                         return;
                     }
                     if (_theradStarter.Complate != null)
@@ -184,6 +185,55 @@ namespace RedApple.GameFramework.manager.UserManager
         }
 
 
+        public void RefreshUserState(Action<RefreshStateResultModel> onComplate)
+        {
+            _threadManager.AddTherad<int, RefreshStateResultModel>("RedApple.GameFramework.manager.UserManager.RefreshUserState", RefreshUserState, 0, onComplate);
+        }
+
+        private void RefreshUserState(object theradStarter)
+        {
+            var _theradStarter = (TheradStarter<int, RefreshStateResultModel>)theradStarter;
+            try
+            {
+
+                if (!_redSessionManager.IsAuthenticated)
+                    _threadManager.Enqueue(() => _theradStarter.Error.Invoke(new ThreadException(new Exception("Authorized Failed"))));
+
+                var openSessionDto = _theradStarter.DATA;
+                using (var _webRequest = new RedWebRequest(_redSessionManager.SessionUser.RedToken))
+                {
+                    var _loginresult = _webRequest.Get<DomainNet35.User.UserSessionModel>($"{_serverSetting.Api}{_serverSetting.RefreshStateUrl}");
+                    if (_loginresult != null)
+                    {
+                        if (_threadManager.unityMainThreadDispatcher != null)
+                            _threadManager.Enqueue(() => _theradStarter.Complate.Invoke(new RefreshStateResultModel(_loginresult)));
+                        else
+                            _theradStarter.Complate.Invoke(new RefreshStateResultModel(_loginresult));
+                    }
+                    //if (_loginresult.result == DomainNet35.Dto.request.GeneralResultType.OK)
+                    //{
+                    //    var user = _redSessionManager.OpenRedSession(_loginresult.UserInfo.Id, _loginresult.UserInfo.UserName, _loginresult.token, _loginresult.UserInfo.RealBlanced, _loginresult.expiredDate);
+
+
+
+                    //    return;
+                    //}
+                    //if (_theradStarter.Complate != null)
+                    //{
+                    //    _threadManager.Enqueue(() => _theradStarter.Complate.Invoke(new SessionResultModel(_loginresult.message)));
+                    //}
+
+                }
+            }
+            catch (Exception ex)
+            {
+                if (_theradStarter.Complate != null)
+                    _threadManager.Enqueue(() => _theradStarter.Complate.Invoke(new RefreshStateResultModel(DomainNet35.status.ResultStatus.Error, ex.Message)));
+
+                if (_theradStarter.Error != null)
+                    _threadManager.Enqueue(() => _theradStarter.Error.Invoke(new ThreadException(ex)));
+            }
+        }
     }
 
 

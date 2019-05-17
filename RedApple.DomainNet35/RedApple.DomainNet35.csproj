@@ -63,10 +63,12 @@
     <Compile Include="User\LogoutUserResultModel.cs" />
     <Compile Include="User\RedGameUser.cs" />
     <Compile Include="User\RedUser.cs" />
+    <Compile Include="User\RefreshStateResultModel.cs" />
     <Compile Include="User\RegisterUserDto.cs" />
     <Compile Include="User\RegisterUserResultModel.cs" />
     <Compile Include="User\UpdateResultModel.cs" />
     <Compile Include="User\UpdateUserDto.cs" />
+    <Compile Include="User\UserSessionModel.cs" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

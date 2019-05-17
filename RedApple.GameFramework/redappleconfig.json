@@ -9,8 +9,9 @@
     "LogingUrl": "/betgoweb/auth/LoginWebUser",
     "RegisterUrl": "/betgoweb/auth/RegisterWebuser",
     "UpdateUserUrl": "/betgoweb/webapi/ChangeMyProfile",
+    "RefreshStateUrl": "/tenant/user/RefreshState",
     "LogOutUrl": "NotUsing"
-    
+
 
 
   },
