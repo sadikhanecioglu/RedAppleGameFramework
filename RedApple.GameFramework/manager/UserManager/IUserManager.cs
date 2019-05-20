@@ -11,6 +11,7 @@ namespace RedApple.ConnectFramework.manager.UserManager
     {
 
         void OpenSession(OpenSessionDto openSessionDto, Action<SessionResultModel> onComplate);
+        void OpenSessionWithToken(OpenSessionDto openSessionDto, Action<SessionResultModel> onComplate);
         //RegisterUserResultModel RegisterUser(RegisterUserDto registerUserDto);
         void RegisterUserAsync(RegisterUserDto registerUserDto, Action<RegisterUserResultModel> onComplate);
         //void RegisterUser(object theradStarter);
