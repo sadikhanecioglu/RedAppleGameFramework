@@ -101,6 +101,51 @@ namespace RedApple.GameFramework.manager.UserManager
             }
         }
 
+        public void OpenSessionWithToken(OpenSessionDto openSessionDto, Action<SessionResultModel> onComplate)
+        {
+
+
+
+            _threadManager.AddTherad<OpenSessionDto, SessionResultModel>("RedApple.GameFramework.manager.UserManager.OpenSessionWithToken", OpenSessionWithToken, openSessionDto, onComplate);
+        }
+        private void OpenSessionWithToken(object theradStarter)
+        {
+
+
+
+            var _theradStarter = (TheradStarter<OpenSessionDto, SessionResultModel>)theradStarter;
+            try
+            {
+                var openSessionDto = _theradStarter.DATA;
+                using (var _webRequest = new RedWebRequest())
+                {
+                    var _loginresult = _webRequest.PostContentJson<DomainNet35.Dto.request.LoginResultModel>($"{_serverSetting.Api}{_serverSetting.LogingWithTokenUrl}", openSessionDto.ToJsonString());
+                    if (_loginresult.result == DomainNet35.Dto.request.GeneralResultType.OK)
+                    {
+                        var user = _redSessionManager.OpenRedSession(_loginresult.UserInfo.Id, _loginresult.UserInfo.UserName, _loginresult.token, _loginresult.UserInfo.RealBlanced, _loginresult.expiredDate);
+                        if (_threadManager.unityMainThreadDispatcher != null)
+                            _threadManager.Enqueue(() => _theradStarter.Complate.Invoke(new SessionResultModel(user)));
+                        else
+                            _theradStarter.Complate.Invoke(new SessionResultModel(user));
+                        return;
+                    }
+                    if (_theradStarter.Complate != null)
+                    {
+                        _threadManager.Enqueue(() => _theradStarter.Complate.Invoke(new SessionResultModel(_loginresult.message)));
+                    }
+
+                }
+            }
+            catch (Exception ex)
+            {
+                if (_theradStarter.Complate != null)
+                    _threadManager.Enqueue(() => _theradStarter.Complate.Invoke(new SessionResultModel(ex.Message)));
+
+                if (_theradStarter.Error != null)
+                    _threadManager.Enqueue(() => _theradStarter.Error.Invoke(new ThreadException(ex)));
+            }
+        }
+
         public void RegisterUserAsync(RegisterUserDto registerUserDto, Action<RegisterUserResultModel> onComplate)
         {
             _threadManager.AddTherad<RegisterUserDto, RegisterUserResultModel>("RedApple.GameFramework.manager.UserManager.RegisterUserAsync", RegisterUser, registerUserDto, onComplate);

@@ -12,6 +12,7 @@ namespace RedApple.GameFramework.config
         public string Api { get; set; }
 
         public string LogingUrl { get; set; }
+        public string LogingWithTokenUrl { get; set; }
         public string RegisterUrl { get; set; }
         public string UpdateUserUrl { get; set; }
         public string LogOutUrl { get; set; }
