@@ -1,7 +1,9 @@
 ﻿using RedApple.ConnectFramework.manager.UserManager;
 using RedApple.GameFramework.config;
 using RedApple.GameFramework.contanier;
+using RedApple.GameFramework.manager.QuestManager;
 using RedApple.GameFramework.manager.UserManager;
+using RedApple.GameFramework.thread;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -32,6 +34,15 @@ namespace RedApple.GameFramework
         }
 
 
+        public void AddMainThreadExecuter(UnityMainThreadDispatcher unityMainThreadDispatcher)
+        {
+
+            RedThreadManager.Instance.SetMainThreadDispacter(unityMainThreadDispatcher);
+
+        }
+
+
+
         /// <summary>
         /// Register Funksiyonu Açılıştı kendi kullanacağı instanceları register yapar ver geriye RedContanierManager döndürür
         /// </summary>
@@ -41,12 +52,13 @@ namespace RedApple.GameFramework
 
             RedContanierManager.Instance.Contanier.RegisterInstanceType<ConnectFramework.socket.IRedSocket, ConnectFramework.socket.RedWebSocket>();
             RedContanierManager.Instance.Contanier.RegisterInstanceType<ConnectFramework.www.IRedWebRequest, ConnectFramework.www.RedWebRequest>();
+            RedContanierManager.Instance.Contanier.RegisterInstanceType<IQuestManager, QuestManager>();
 
             return RedContanierManager.Instance;
 
         }
 
-        public RedApple.GameFramework.config.RedConfigManager Configure(string configPath)
+        public RedApple.GameFramework.config.RedConfigManager Configure(string configPath = "")
         {
             this._configPath = configPath;
             if (string.IsNullOrEmpty(_configPath))

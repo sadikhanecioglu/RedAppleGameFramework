@@ -29,8 +29,10 @@ namespace RedApple.DomainNet35.User
         public string Token { get; set; }
 
         public OpenSessionType RegisterType { get; set; }
+        public bool IsAutoLogin { get; set; }
 
-        
+
+
 
     }
 }

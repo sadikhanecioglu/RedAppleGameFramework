@@ -15,6 +15,8 @@ namespace RedApple.GameFramework.config
         public string RegisterUrl { get; set; }
         public string UpdateUserUrl { get; set; }
         public string LogOutUrl { get; set; }
+        public string RefreshStateUrl { get; set; }
+
 
 
     }
