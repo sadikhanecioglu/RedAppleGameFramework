@@ -18,6 +18,7 @@ namespace RedApple.ConnectFramework.manager.UserManager
         //RegisterUserResultModel RegisterUserAsync(RegisterUserDto registerUserDto, Action<RegisterUserResultModel> onComplate);
         void LogoutUser(Action<LogoutUserResultModel> onComplate);
         void UpdateUser(UpdateUserDto updateUserDto,Action<UpdateResultModel> onComplate);
+        void CheckServerStatus(Action<ServerStatusResultModel> onComplate);
 
         void RefreshUserState(Action<RefreshStateResultModel> onComplate);
     }

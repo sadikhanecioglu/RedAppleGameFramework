@@ -279,6 +279,46 @@ namespace RedApple.GameFramework.manager.UserManager
                     _threadManager.Enqueue(() => _theradStarter.Error.Invoke(new ThreadException(ex)));
             }
         }
+
+        public void CheckServerStatus(Action<ServerStatusResultModel> onComplate)
+        {
+            _threadManager.AddTherad<int, ServerStatusResultModel>("RedApple.GameFramework.manager.UserManager.CheckServerStatus", CheckServerStatus, 0, onComplate);
+        }
+
+        private void CheckServerStatus(object theradStarter)
+        {
+
+            var _theradStarter = (TheradStarter<int, ServerStatusResultModel>)theradStarter;
+            try
+            {
+
+                using (var _webRequest = new RedWebRequest())
+                {
+                    var serverStatus = _webRequest.Get<ServerStatus>($"{_serverSetting.Api}/betgoweb/auth/ServerStatus");
+
+                    _threadManager.Enqueue(() => _theradStarter.Complate.Invoke(new ServerStatusResultModel(serverStatus)));
+                    return;
+
+                    //if (_loginresult.result == DomainNet35.Dto.request.GeneralResultType.OK)
+                    //{
+
+                    //}
+                    //if (_theradStarter.Complate != null)
+                    //    _theradStarter.Complate.Invoke(new SessionResultModel(_loginresult.message));
+                }
+            }
+            catch (Exception ex)
+            {
+
+                if (_theradStarter.Complate != null)
+                    _threadManager.Enqueue(() => _theradStarter.Complate.Invoke(new ServerStatusResultModel(ex.Message)));
+
+                if (_theradStarter.Error != null)
+                    _threadManager.Enqueue(() => _theradStarter.Error.Invoke(new ThreadException(ex)));
+            }
+
+
+        }
     }
 
 
